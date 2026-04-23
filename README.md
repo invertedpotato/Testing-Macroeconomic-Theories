@@ -70,4 +70,4 @@ This project tests standard macroeconomic theories (IS-LM model, labor market dy
 
 ## Author
 
-[Your Name] | [Your Email] | HKUST First-Year
+Ashvin Budhiraja | ashvinbudhiraja9@gmail.com | 
