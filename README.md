@@ -57,7 +57,7 @@ This project tests standard macroeconomic theories (IS-LM model, labor market dy
 2. Install requirements: `pip install -r requirements.txt`
 3. Obtain a free FRED API key [here](https://fred.stlouisfed.org/docs/api/api_key.html)
 4. Add your API key to the notebook (or use environment variable)
-5. Run `macroeconomic_analysis.ipynb`
+5. Run `macroeconomics_analysis.ipynb`
 
 ## Requirements
 
