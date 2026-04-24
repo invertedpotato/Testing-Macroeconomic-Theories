@@ -1,63 +1,47 @@
-# Testing-Macroeconomic-Theory
-Empirically testing macroeconomic theories using real world data
-# Empirical Testing of Macroeconomic Theory
+# Empirical Examination of Macroeconomic Theories
 
-**Python | Pandas | Statsmodels | FRED API**
+This Jupyter notebook analyzes five key macroeconomic theories using real-world U.S. data from 1980-2024. The analysis tests whether these theories hold up empirically by examining statistical significance and explanatory power (R-squared values).
 
 ## Overview
 
-This project tests standard macroeconomic theories (IS-LM model, labor market dynamics, Keynesian GDP) using historical U.S. data from 1980–2024. All data was retrieved via the FRED API.
+This project empirically tests the following macroeconomic theories:
 
-## Key Empirical Results
-
-### 1. IS Curve Validation
-- **Finding:** Real private investment has a statistically significant negative relationship with the federal funds rate
-- **Interpretation:** Empirically confirms the downward slope of the IS curve
-
-### 2. Labor Market Dynamics
-- **Finding:** Industrial Production and Nonfarm Employment show a robust positive relationship
-- **Interpretation:** Validates standard labor demand theory
-
-### 3. Money Demand (LM Curve)
-- **Finding:** Income elasticity of money demand = 1.13
-- **Finding:** Inverse relationship between interest rates and real money balances confirmed
-
-### 4. Recession Forecasting
-- **Finding:** 10yr-2yr Treasury yield curve predicts NBER recessions with **~78% accuracy**
-- **Method:** Historical analysis of yield curve inversions preceding recessions
-
-### 5. GDP Determinants
-- **Finding:** Consumption, investment, government spending, and unemployment explain **>96% of GDP variation** (R² = 0.96+)
-- **Method:** Stepwise multiple regression
-- **Interpretation:** Largely confirms the Keynesian expenditure approach
+| # | Theory | Hypothesis |
+|---|--------|------------|
+| 1 | **IS Curve** | Higher interest rates → Lower investment (negative relationship) |
+| 2 | **Labor Market Theory** | Higher production → Higher employment (positive relationship) |
+| 3 | **LM Curve / Money Demand** | Income ↑ → Money Demand ↑; Interest Rate ↑ → Money Demand ↓ |
+| 4 | **Phillips Curve** | Lower unemployment → Higher inflation (negative relationship) |
+| 5 | **Quantity Theory of Money** | Higher money supply growth → Higher inflation (positive relationship) |
 
 ## Data Sources
 
-- **FRED API (Federal Reserve Economic Data)**
-  - Federal funds rate
-  - Real private investment
-  - Industrial production
-  - Nonfarm employment
-  - Money supply measures
-  - Treasury yields (10yr, 2yr)
-  - GDP and components
-  - Unemployment rate
+All data is fetched directly from the Federal Reserve Economic Data (FRED) API using `pandas_datareader`. Key datasets include:
 
-## Methods Used
+| FRED Code | Description |
+|-----------|-------------|
+| **M2SL** | M2 Money Supply (broad money) |
+| **CPIAUCSL** | Consumer Price Index (inflation measure) |
+| **INDPRO** | Industrial Production Index |
+| **PAYEMS** | Total Nonfarm Payroll Employment |
+| **UNRATE** | Civilian Unemployment Rate |
+| **TB3MS** | 3-Month Treasury Bill Rate |
+| **GDP** | Gross Domestic Product (for velocity calculation) |
 
-- Linear regression
-- Multiple regression (stepwise selection)
-- Log-log models (elasticity estimation)
-- Time series analysis
-- Hypothesis testing
+## Key Findings
 
-## How to Run
+| Theory | Expected Relationship | Result | Statistical Significance | R² |
+|--------|---------------------|--------|-------------------------|-----|
+| IS Curve | Interest Rate ↓ → Investment ↑ | ✓ Supported | p < 0.001 | 0.51 |
+| Labor Market | Production ↑ → Employment ↑ | ✓ Supported | p < 0.001 | 0.55 |
+| Money Demand (Income) | Income ↑ → Money Demand ↑ | ✓ Supported | p < 0.001 | — |
+| Money Demand (Interest) | Interest Rate ↑ → Money Demand ↓ | ✗ Not supported | p = 0.202 | — |
+| Phillips Curve | Unemployment ↓ → Inflation ↑ | ✗ Not supported | p = 0.599 | ≈ 0 |
+| Quantity Theory (Pre-2008) | M2 Growth ↑ → Inflation ↑ | ✓ Supported | p = 0.006 | 0.023 |
+| Quantity Theory (Post-2008) | M2 Growth ↑ → Inflation ↑ | ✗ Not supported | p = 0.035 (negative slope) | 0.023 |
 
-1. Clone this repository
-2. Install requirements: `pip install -r requirements.txt`
-3. Obtain a free FRED API key [here](https://fred.stlouisfed.org/docs/api/api_key.html)
-4. Add your API key to the notebook (or use environment variable)
-5. Run `macroeconomics_analysis.ipynb`
+## Requirements
+
 
 ## Requirements
 
